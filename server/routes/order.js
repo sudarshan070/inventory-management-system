@@ -9,7 +9,11 @@ router.post('/', async (req, res, next) => {
         if (product.quantity > req.body.quantity) {
             req.body.status = "confirmed"
             let order = await Order.create(req.body)
-            var updatedProduct = await Product.findByIdAndUpdate(product.id, { $inc: { quantity: -req.body.quantity } }, { new: true })
+            var updatedProduct = await Product.findByIdAndUpdate(
+                product.id,
+                { $inc: { quantity: -req.body.quantity } },
+                { new: true }
+            )
             res.status(201).json({ success: true, order })
         } else {
             console.log("not enough quantity");
@@ -32,11 +36,17 @@ router.get('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
-        
         var order = await Order.findById(req.body.order)
-        var product = await Product.findByIdAndUpdate(order.product, { $inc: { quantity: order.quantity } })
-        var updateOrder = await Order.findByIdAndUpdate(order.id, { status: req.body.status }, { new: true })
-        res.status(201).json({success:true,msg:"product cancelled"})
+        var product = await Product.findByIdAndUpdate(
+            order.product,
+            { $inc: { quantity: order.quantity } }
+        )
+        var updateOrder = await Order.findByIdAndUpdate(
+            order.id,
+            { status: req.body.status },
+            { new: true }
+        )
+        res.status(201).json({ success: true, msg: "order cancelled" })
     } catch (error) {
         next(error)
     }
