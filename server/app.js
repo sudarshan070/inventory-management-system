@@ -16,6 +16,7 @@ mongoose.connect(clusterMongoDb,
 
 var indexRouter = require('./routes/index');
 var productRouter = require('./routes/product');
+var orderRouter = require('./routes/order')
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/product', productRouter);
+app.use('/order', orderRouter)
 
 module.exports = app;
 
