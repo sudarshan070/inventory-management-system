@@ -40,4 +40,19 @@ router.get('/:slug', async (req, res, next) => {
   }
 })
 
+// update product
+router.put('/:slug', async (req, res, next) => {
+  try {
+    var product = await Product.findOneAndUpdate(
+      { slug: req.params.slug },
+      req.body.product,
+      { new: true })
+    res.json({ product })
+  } catch (error) {
+    next(error)
+  }
+})
+
+
+
 module.exports = router;
