@@ -53,6 +53,16 @@ router.put('/:slug', async (req, res, next) => {
   }
 })
 
-
+// delete product 
+router.delete('/:slug', async (req, res, next) => {
+  try {
+    var product = await Product.findOneAndDelete({
+      slug: req.params.slug
+    })
+    res.json({ success: "Delete product" })
+  } catch (error) {
+    next(error)
+  }
+})
 
 module.exports = router;
