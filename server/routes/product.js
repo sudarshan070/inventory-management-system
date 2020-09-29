@@ -11,7 +11,8 @@ router.post('/add', async (req, res, next) => {
       product: {
         name: product.name,
         quantity: product.quantity,
-        warehouse: product.warehouse
+        warehouse: product.warehouse,
+        slug: product.slug
       }
     })
   } catch (error) {
@@ -20,10 +21,19 @@ router.post('/add', async (req, res, next) => {
 })
 
 // get product
-
 router.get("/allproduct", async (req, res, next) => {
   try {
     var product = await Product.find({})
+    res.status(201).json({ product })
+  } catch (error) {
+    next(error)
+  }
+})
+
+// get single product
+router.get('/:slug', async (req, res, next) => {
+  try {
+    var product = await Product.findOne({ slug: req.params.slug })
     res.status(201).json({ product })
   } catch (error) {
     next(error)
