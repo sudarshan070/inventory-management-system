@@ -1,21 +1,16 @@
 import React from "react";
 import {} from "react-bootstrap";
-import logo from "../media/abc.png";
 
 export default function Header() {
   return (
     <div className="header">
-      <div className="d-flex justify-content-between p-3">
-        <div className="logo">
-          <img src={logo} alt="logo" />
+      <div className="d-flex justify-content-between align-items-center p-3 px-3">
+        <h2>Logo</h2>
+        <div>
+          <h1>Inventory Management System</h1>
         </div>
         <div>
-          <button type="button" className="btn btn-outline-primary">
-            Add product
-          </button>
-          <button type="button" className="btn btn-outline-success ml-4">
-            Order Product
-          </button>
+          <h2>Pb</h2>
         </div>
       </div>
     </div>

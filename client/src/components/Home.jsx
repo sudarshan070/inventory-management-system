@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import Loader from "./Loader";
+import Header from "./Header";
+import NavBar from "./NavBar";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -21,37 +23,40 @@ export default class Home extends React.Component {
   render() {
     const { products } = this.state;
     return (
-      <div className="home">
-        <div className="home-hero">
-          <h1>Inventory Management System</h1>
-        </div>
-        {products ? (
-          <table className="table">
-            <thead className="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Product</th>
-                <th scope="col">In Stock</th>
-                <th scope="col">Warehouse</th>
-              </tr>
-            </thead>
-            {products.map((product, i) => {
-              return (
-                <tbody key={i}>
+      <>
+        <Header />
+        <div className="home">
+          <div className="container">
+            <NavBar />
+            {products ? (
+              <table className="table">
+                <thead className="thead-dark">
                   <tr>
-                    <th scope="row">1</th>
-                    <td>{product.name}</td>
-                    <td>{product.quantity}</td>
-                    <td>{product.warehouse}</td>
+                    <th scope="col">Product</th>
+                    <th scope="col">In Stock</th>
+                    <th scope="col">Warehouse</th>
+                    <th scope="col"></th>
                   </tr>
-                </tbody>
-              );
-            })}
-          </table>
-        ) : (
-          <Loader />
-        )}
-      </div>
+                </thead>
+                {products.map((product, i) => {
+                  return (
+                    <tbody key={i}>
+                      <tr>
+                        <td>{product.name}</td>
+                        <td>{product.quantity}</td>
+                        <td>{product.warehouse}</td>
+                        <th scope="row">shop</th>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            ) : (
+              <Loader />
+            )}
+          </div>
+        </div>
+      </>
     );
   }
 }

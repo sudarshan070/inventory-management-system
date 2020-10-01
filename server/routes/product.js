@@ -6,7 +6,9 @@ var Product = require('../models/product')
 // add product
 router.post('/add', async (req, res, next) => {
   try {
+    console.log(req.body,"body");
     var product = await Product.create(req.body.product)
+    console.log(product,"product");
     res.status(201).json({
       product: {
         name: product.name,
