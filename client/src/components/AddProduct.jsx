@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar";
-import Img from "../media/abc.png";
+import Img from "../media/ims.png";
 import axios from "axios";
 
 export default class AddProduct extends React.Component {
@@ -30,10 +30,19 @@ export default class AddProduct extends React.Component {
       <>
         <div className="home">
           <div className="container">
+            <div className="media-heading">
+              <h1>Inventory Management System</h1>
+            </div>
             <NavBar />
             <div className="d-flex justify-content-between align-items-center">
-              <img src={Img} alt="png" />
+              <div className='addProduct-img'>
+                <img style={{ width: "400px" }} src={Img} alt="png" />
+              </div>
+
               <div className="outer-box">
+                <label className="label" htmlFor="">
+                  Add Product Name
+                </label>
                 <input
                   className="form-control"
                   type="text"
@@ -41,6 +50,9 @@ export default class AddProduct extends React.Component {
                   value={name}
                   onChange={this.handleInput}
                 />
+                <label className="label" htmlFor="">
+                  Add Product quantity
+                </label>
                 <input
                   className="form-control"
                   type="number"
@@ -48,6 +60,9 @@ export default class AddProduct extends React.Component {
                   value={quantity}
                   onChange={this.handleInput}
                 />
+                <label className="label" htmlFor="">
+                  Warehouse Name
+                </label>
                 <input
                   className="form-control"
                   type="text"

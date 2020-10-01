@@ -16,7 +16,6 @@ export default class OrderList extends React.Component {
     axios.get("/order").then((res) => {
       const orders = res.data;
       this.setState({ orders });
-      // console.log(orders);
     });
   }
 
@@ -30,10 +29,13 @@ export default class OrderList extends React.Component {
   };
   render() {
     const { orders } = this.state;
-    console.log(this.props, "here state");
+    // console.log(this.props, "here state");
     return (
       <div className="home">
         <div className="container">
+          <div className="media-heading">
+            <h1>Inventory Management System</h1>
+          </div>
           <NavBar />
           {orders ? (
             <table className="table">

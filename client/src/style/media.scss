@@ -1,0 +1,32 @@
+@media screen and (max-width: 760px) {
+  .header {
+    h1 {
+      display: none;
+    }
+  }
+  .home {
+    padding-top: 1rem;
+  }
+  .media-heading {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .form_nav-link {
+    text-align: start;
+    .link,
+    .active {
+      font-size: 15px;
+    }
+    .link{
+      
+    }
+  }
+  .addProduct-img {
+    display: none;
+  }
+  .outer-box {
+    width: 100%;
+    margin-left: 0;
+  }
+}

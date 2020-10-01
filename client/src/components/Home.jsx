@@ -27,6 +27,9 @@ export default class Home extends React.Component {
       <>
         <div className="home">
           <div className="container">
+            <div className="media-heading">
+              <h1>Inventory Management System</h1>
+            </div>
             <NavBar />
             {products ? (
               <table className="table">
@@ -35,7 +38,7 @@ export default class Home extends React.Component {
                     <th scope="col">Product</th>
                     <th scope="col">In Stock</th>
                     <th scope="col">Warehouse</th>
-                    <th scope="col"></th>
+                    <th scope="col">Shop</th>
                   </tr>
                 </thead>
                 {products.map((product, i) => {

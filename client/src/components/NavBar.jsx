@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function NavBar() {
   return (
     <div className="form_nav-link">
-      <NavLink className="link" activeClassName="active" to="/">
+      <NavLink to="/" className="link" activeClassName="active">
         All Product
       </NavLink>
       <NavLink className="link" activeClassName="active" to="/addproduct">
