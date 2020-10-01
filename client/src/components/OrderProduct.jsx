@@ -15,7 +15,7 @@ export default class OrderProduct extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props, "this.props");
+    // console.log(this.props, "this.props");
     const {
       match: {
         params: { id },

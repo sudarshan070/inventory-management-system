@@ -17,7 +17,7 @@ export default class Home extends React.Component {
     axios.get("/product/allproduct").then((res) => {
       const products = res.data;
       this.setState({ products });
-      console.log({ products });
+      // console.log({ products });
     });
   }
 
