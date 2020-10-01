@@ -10,7 +10,7 @@ export default function NavBar() {
       <NavLink className="link" activeClassName="active" to="/addproduct">
         Add Product
       </NavLink>
-      <NavLink className="link" activeClassName="active" to="/">
+      <NavLink className="link" activeClassName="active" to="/orderlist">
         Purchase order
       </NavLink>
     </div>

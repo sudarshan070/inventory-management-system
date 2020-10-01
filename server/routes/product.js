@@ -8,7 +8,6 @@ router.post('/add', async (req, res, next) => {
   try {
     console.log(req.body,"body");
     var product = await Product.create(req.body.product)
-    console.log(product,"product");
     res.status(201).json({
       product: {
         name: product.name,
@@ -26,7 +25,6 @@ router.post('/add', async (req, res, next) => {
 router.get("/allproduct", async (req, res, next) => {
   try {
     var product = await Product.find({})
-    // console.log(product, 'server product');
     res.status(201).json(product)
   } catch (error) {
     next(error)
@@ -36,7 +34,8 @@ router.get("/allproduct", async (req, res, next) => {
 // get single product
 router.get('/:slug', async (req, res, next) => {
   try {
-    var product = await Product.findOne({ slug: req.params.slug })
+    var product = await Product.findById(req.params.slug)
+    // console.log(product,"product got");2e
     res.status(201).json({ product })
   } catch (error) {
     next(error)

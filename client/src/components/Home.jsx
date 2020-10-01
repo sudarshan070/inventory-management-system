@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 import Loader from "./Loader";
-import Header from "./Header";
 import NavBar from "./NavBar";
+import shop from "../media/shop.svg";
+import { NavLink } from "react-router-dom";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -24,7 +25,6 @@ export default class Home extends React.Component {
     const { products } = this.state;
     return (
       <>
-        <Header />
         <div className="home">
           <div className="container">
             <NavBar />
@@ -39,13 +39,18 @@ export default class Home extends React.Component {
                   </tr>
                 </thead>
                 {products.map((product, i) => {
+                  // console.log(product, "product in map");
                   return (
                     <tbody key={i}>
                       <tr>
                         <td>{product.name}</td>
                         <td>{product.quantity}</td>
                         <td>{product.warehouse}</td>
-                        <th scope="row">shop</th>
+                        <th scope="row">
+                          <NavLink to={`/product/${product._id}`}>
+                            <img style={{ width: 20 }} src={shop} alt="shop" />
+                          </NavLink>
+                        </th>
                       </tr>
                     </tbody>
                   );

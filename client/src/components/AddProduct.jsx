@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 import NavBar from "./NavBar";
 import Img from "../media/abc.png";
 import axios from "axios";
@@ -29,7 +28,6 @@ export default class AddProduct extends React.Component {
     const { name, quantity, warehouse } = this.state;
     return (
       <>
-        <Header />
         <div className="home">
           <div className="container">
             <NavBar />
