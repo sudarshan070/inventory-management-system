@@ -6,7 +6,6 @@ var Product = require('../models/product')
 // add product
 router.post('/add', async (req, res, next) => {
   try {
-    // console.log(req.body,"body");
     var product = await Product.create(req.body.product)
     res.status(201).json({
       product: {
@@ -49,7 +48,7 @@ router.put('/:slug', async (req, res, next) => {
       { slug: req.params.slug },
       req.body.product,
       { new: true })
-    res.json({ product })
+    res.status(201).json({ product })
   } catch (error) {
     next(error)
   }
@@ -61,7 +60,7 @@ router.delete('/:slug', async (req, res, next) => {
     var product = await Product.findOneAndDelete({
       slug: req.params.slug
     })
-    res.json({ success: "Delete product" })
+    res.status(201).json({ success: "Delete product" })
   } catch (error) {
     next(error)
   }
