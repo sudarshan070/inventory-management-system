@@ -25,7 +25,7 @@ router.post('/', async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
     try {
-        let orderList = await Order.find({}).populate("product").exec();
+        let orderList = await Order.find({}).populate("product").exec()
         res.status(201).json(orderList)
     } catch (error) {
         next(error);
@@ -34,6 +34,9 @@ router.get('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
+
+        var order = await Order.findById(req.body.order)
+ 
         var order = await Order.findById(req.body.order)
         var product = await Product.findByIdAndUpdate(
             order.product,

@@ -1,0 +1,39 @@
+@media screen and (max-width: 760px) {
+  .header {
+    h1 {
+      display: none;
+    }
+  }
+  .container {
+    padding: 0;
+  }
+  .home {
+    padding-top: 1rem;
+  }
+  .media-heading {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .form_nav-link {
+    .link,
+    .active {
+      font-size: 15px;
+      padding: 0.7rem 0.3rem;
+    }
+  }
+  .addProduct-img {
+    display: none;
+  }
+  .outer-box {
+    width: 100%;
+    margin-left: 0;
+  }
+  .table {
+    font-size: 12px;
+  }
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
