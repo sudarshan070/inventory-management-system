@@ -55,11 +55,9 @@ router.put('/:slug', async (req, res, next) => {
 })
 
 // delete product 
-router.delete('/:slug', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
-    var product = await Product.findOneAndDelete({
-      slug: req.params.slug
-    })
+    var deleteProduct = await Product.findByIdAndDelete(req.params.id)
     res.status(201).json({ success: "Delete product" })
   } catch (error) {
     next(error)

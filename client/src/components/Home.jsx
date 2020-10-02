@@ -17,7 +17,6 @@ export default class Home extends React.Component {
     axios.get("/product/allproduct").then((res) => {
       const products = res.data;
       this.setState({ products });
-      // console.log({ products });
     });
   }
 
@@ -42,7 +41,6 @@ export default class Home extends React.Component {
                   </tr>
                 </thead>
                 {products.map((product, i) => {
-                  // console.log(product, "product in map");
                   return (
                     <tbody key={i}>
                       <tr>
@@ -51,7 +49,11 @@ export default class Home extends React.Component {
                         <td>{product.warehouse}</td>
                         <th scope="row">
                           <NavLink to={`/product/${product._id}`}>
-                            <img style={{ width: 20 }} src={shop} alt="shop" />
+                            <img
+                              style={{ width: 20, marginRight: 5 }}
+                              src={shop}
+                              alt="shop"
+                            />
                           </NavLink>
                         </th>
                       </tr>

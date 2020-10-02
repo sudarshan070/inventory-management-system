@@ -36,7 +36,7 @@ router.get('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
-        console.log(req.body, "body");
+        // console.log(req.body, "body");
         var order = await Order.findById(req.body.order)
         console.log(order, "order");
         var product = await Product.findByIdAndUpdate(
@@ -59,7 +59,6 @@ router.delete('/:id', async (req, res, next) => {
     try {
         console.log(req.params.id, "id is here");
         var deleteOrder = await Order.findByIdAndDelete(req.params.id)
-        console.log(deleteOrder)
         res.status(201).json({ success: "Delete Order" })
     } catch (error) {
         next(error)

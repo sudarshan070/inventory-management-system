@@ -4,6 +4,9 @@
       display: none;
     }
   }
+  .container {
+    padding: 0;
+  }
   .home {
     padding-top: 1rem;
   }
@@ -13,7 +16,6 @@
     font-size: 1.2rem;
   }
   .form_nav-link {
-    text-align: start;
     .link,
     .active {
       font-size: 15px;
@@ -26,5 +28,12 @@
   .outer-box {
     width: 100%;
     margin-left: 0;
+  }
+  .table {
+    font-size: 12px;
+  }
+  svg {
+    width: 16px;
+    height: 16px;
   }
 }
