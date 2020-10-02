@@ -3,6 +3,8 @@ var router = express.Router();
 var Order = require("../models/order")
 var Product = require('../models/product')
 
+
+
 router.post('/', async (req, res, next) => {
     try {
         var product = await Product.findById(req.body.product)
@@ -34,10 +36,8 @@ router.get('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
-
         var order = await Order.findById(req.body.order)
- 
-        var order = await Order.findById(req.body.order)
+        
         var product = await Product.findByIdAndUpdate(
             order.product,
             { $inc: { quantity: order.quantity } }
@@ -47,7 +47,8 @@ router.put('/', async (req, res, next) => {
             { status: "cancelled" },
             { new: true }
         )
-        res.status(201).json({ success: true, msg: "order cancelled" })
+        var orderList=await Order.find({})
+        res.status(201).json({ success: true ,orderList})
     } catch (error) {
         next(error)
     }

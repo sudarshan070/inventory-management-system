@@ -10,6 +10,7 @@ export default class AddProduct extends React.Component {
       name: "",
       quantity: "",
       warehouse: "",
+      error: "",
     };
   }
 
@@ -20,12 +21,16 @@ export default class AddProduct extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     axios.post("product/add", { product: this.state }).then((res) => {
-      this.props.history.push("/");
+      if (res.status === 201) {
+        this.props.history.push("/");
+      } else {
+        this.setState({ error: "Something Went Wrong!" });
+      }
     });
   };
 
   render() {
-    const { name, quantity, warehouse } = this.state;
+    const { name, quantity, warehouse, error } = this.state;
     return (
       <>
         <div className="home">
@@ -35,7 +40,7 @@ export default class AddProduct extends React.Component {
             </div>
             <NavBar />
             <div className="d-flex justify-content-between align-items-center">
-              <div className='addProduct-img'>
+              <div className="addProduct-img">
                 <img style={{ width: "400px" }} src={Img} alt="png" />
               </div>
 
@@ -50,6 +55,7 @@ export default class AddProduct extends React.Component {
                   value={name}
                   onChange={this.handleInput}
                 />
+
                 <label className="label" htmlFor="">
                   Add Product quantity
                 </label>
@@ -70,6 +76,7 @@ export default class AddProduct extends React.Component {
                   value={warehouse}
                   onChange={this.handleInput}
                 />
+                <span style={{ color: "red" }}>{error && error}</span>
                 <button
                   className="btn-form btn-block"
                   type="submit"

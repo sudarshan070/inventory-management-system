@@ -34,7 +34,6 @@ router.get("/allproduct", async (req, res, next) => {
 router.get('/:slug', async (req, res, next) => {
   try {
     var product = await Product.findById(req.params.slug)
-    // console.log(product,"product got");2e
     res.status(201).json({ product })
   } catch (error) {
     next(error)

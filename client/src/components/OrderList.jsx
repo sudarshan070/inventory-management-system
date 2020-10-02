@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import axios from "axios";
 import Loader from "./Loader";
 
+
 export default class OrderList extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,8 @@ export default class OrderList extends React.Component {
   handleStatus = (id) => {
     axios.put("/order", { order: id }).then((res) => {
       if (res.status === 201) {
-        this.props.history.push("/");
+        console.log(res.data, "orders");
+        this.setState({ orders: res.data.orderList });
       }
     });
   };
@@ -36,7 +38,8 @@ export default class OrderList extends React.Component {
   };
   render() {
     const { orders } = this.state;
-    console.log(this.props, "here state");
+
+    console.log(this.state, "here state");
     return (
       <div className="home">
         <div className="container">

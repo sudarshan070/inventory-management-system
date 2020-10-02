@@ -15,13 +15,11 @@ export default class OrderProduct extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props, "this.props");
     const {
       match: {
         params: { id },
       },
     } = this.props;
-    console.log(id, "slug");
     this.productSave(id);
   }
 
@@ -32,7 +30,6 @@ export default class OrderProduct extends React.Component {
       const quantity = res.data.product.quantity;
       const warehouse = res.data.product.warehouse;
       this.setState({ name, quantity, warehouse, id });
-      console.log(name);
     });
   };
 
@@ -79,7 +76,11 @@ export default class OrderProduct extends React.Component {
               name="customerName"
               onChange={this.handleInput}
             />
-            {quantity < customerQuantity ? <h1>Not Enough quantity</h1> : ""}
+            {quantity < customerQuantity ? (
+              <h1 style={{ color: "tomato" }}>Not Enough quantity in Stock</h1>
+            ) : (
+              ""
+            )}
             <label className="label">Add Quantity</label>
             <input
               className="form-control"
@@ -94,7 +95,7 @@ export default class OrderProduct extends React.Component {
               type="submit"
               onClick={this.handleSubmit}
             >
-              Byu Product
+              Buy Product
             </button>
           </div>
         </div>
