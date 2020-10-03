@@ -10,7 +10,7 @@ export default class AddProduct extends React.Component {
       name: "",
       quantity: "",
       warehouse: "",
-      error: "",
+      
     };
   }
 
@@ -23,14 +23,13 @@ export default class AddProduct extends React.Component {
     axios.post("product/add", { product: this.state }).then((res) => {
       if (res.status === 201) {
         this.props.history.push("/");
-      } else {
-        this.setState({ error: "Something Went Wrong!" });
-      }
+      } 
     });
   };
 
   render() {
-    const { name, quantity, warehouse, error } = this.state;
+    const { name, quantity, warehouse} = this.state;
+    const disable=!name|| !quantity|| !warehouse
     return (
       <>
         <div className="home">
@@ -45,6 +44,7 @@ export default class AddProduct extends React.Component {
               </div>
 
               <div className="outer-box">
+                <h4>**Please fill the all fields</h4>
                 <label className="label" htmlFor="">
                   Add Product Name
                 </label>
@@ -76,10 +76,10 @@ export default class AddProduct extends React.Component {
                   value={warehouse}
                   onChange={this.handleInput}
                 />
-                <span style={{ color: "red" }}>{error && error}</span>
                 <button
                   className="btn-form btn-block"
                   type="submit"
+                  disabled={disable}
                   onClick={this.handleSubmit}
                 >
                   Add Product
